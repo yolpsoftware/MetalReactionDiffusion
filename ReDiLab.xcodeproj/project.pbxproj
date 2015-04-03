@@ -7,18 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BE1E50CA1A04367B000BD5C1 /* ReDiLab.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BE1E50C81A04367B000BD5C1 /* ReDiLab.xcdatamodeld */; };
-		BE1E50CD1A0437F8000BD5C1 /* ReactionDiffusionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1E50CC1A0437F8000BD5C1 /* ReactionDiffusionEntity.swift */; };
 		BE1E51021A052976000BD5C1 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1E51011A052976000BD5C1 /* UIImageExtension.swift */; };
-		BE1E51041A052F9D000BD5C1 /* BrowseAndLoadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE1E51031A052F9D000BD5C1 /* BrowseAndLoadController.swift */; };
 		BE3CC52C1A00BBB70065A637 /* grayScottNoisySquareTwo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BE3CC52B1A00BBB70065A637 /* grayScottNoisySquareTwo.jpg */; };
 		BE97558219F8E8C00003C748 /* noisySquare.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BE97558119F8E8C00003C748 /* noisySquare.jpg */; };
-		BE97558819F901960003C748 /* ReactionDiffusionEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE97558719F901960003C748 /* ReactionDiffusionEditor.swift */; };
-		BE9AA3A319F90A3E006640BF /* ReactionDiffusionImplementations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9AA3A219F90A3E006640BF /* ReactionDiffusionImplementations.swift */; };
-		BE9AA3A519F92808006640BF /* ParameterWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9AA3A419F92808006640BF /* ParameterWidget.swift */; };
-		BE9AA3A719F950A6006640BF /* ReactionDiffusion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9AA3A619F950A6006640BF /* ReactionDiffusion.swift */; };
 		BEA8066519F40E75001C1673 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEA8066419F40E75001C1673 /* Async.swift */; };
-		BEAC770D1A0207A4004FC852 /* ParameterWidgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAC770C1A0207A4004FC852 /* ParameterWidgetViewController.swift */; };
 		BEB11BB21A20684D00CD5515 /* LaunchScreenBackground.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BEB11BB11A20684D00CD5515 /* LaunchScreenBackground.jpg */; };
 		BEB5F0BE19FB6FEA00517D2B /* grayScottNoisySquare.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BEB5F0BD19FB6FEA00517D2B /* grayScottNoisySquare.jpg */; };
 		BEB5F0C019FBB21B00517D2B /* fhnNoisySquare.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BEB5F0BF19FBB21B00517D2B /* fhnNoisySquare.jpg */; };
@@ -31,7 +23,6 @@
 		BEB6A4FB19F21FCD00C158C8 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEB6A4F919F21FCD00C158C8 /* LaunchScreen.xib */; };
 		BEB6A50719F21FCD00C158C8 /* MetalReactionDiffusionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6A50619F21FCD00C158C8 /* MetalReactionDiffusionTests.swift */; };
 		BEB6A51119F2214900C158C8 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = BEB6A51019F2214900C158C8 /* Shaders.metal */; };
-		BED542D31A1878520092C272 /* Presets.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED542D21A1878520092C272 /* Presets.swift */; };
 		BEDB3F651A1892B4002CA9DF /* preset.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BEDB3F641A1892B4002CA9DF /* preset.jpg */; };
 /* End PBXBuildFile section */
 
@@ -46,18 +37,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		BE1E50C91A04367B000BD5C1 /* ReDiLab.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ReDiLab.xcdatamodel; sourceTree = "<group>"; };
-		BE1E50CC1A0437F8000BD5C1 /* ReactionDiffusionEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionDiffusionEntity.swift; sourceTree = "<group>"; };
 		BE1E51011A052976000BD5C1 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
-		BE1E51031A052F9D000BD5C1 /* BrowseAndLoadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseAndLoadController.swift; sourceTree = "<group>"; };
 		BE3CC52B1A00BBB70065A637 /* grayScottNoisySquareTwo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grayScottNoisySquareTwo.jpg; sourceTree = "<group>"; };
 		BE97558119F8E8C00003C748 /* noisySquare.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = noisySquare.jpg; sourceTree = "<group>"; };
-		BE97558719F901960003C748 /* ReactionDiffusionEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionDiffusionEditor.swift; sourceTree = "<group>"; };
-		BE9AA3A219F90A3E006640BF /* ReactionDiffusionImplementations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionDiffusionImplementations.swift; sourceTree = "<group>"; };
-		BE9AA3A419F92808006640BF /* ParameterWidget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterWidget.swift; sourceTree = "<group>"; };
-		BE9AA3A619F950A6006640BF /* ReactionDiffusion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionDiffusion.swift; sourceTree = "<group>"; };
 		BEA8066419F40E75001C1673 /* Async.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Async.swift; sourceTree = "<group>"; };
-		BEAC770C1A0207A4004FC852 /* ParameterWidgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterWidgetViewController.swift; sourceTree = "<group>"; };
 		BEB11BB11A20684D00CD5515 /* LaunchScreenBackground.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = LaunchScreenBackground.jpg; sourceTree = "<group>"; };
 		BEB5F0BD19FB6FEA00517D2B /* grayScottNoisySquare.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grayScottNoisySquare.jpg; sourceTree = "<group>"; };
 		BEB5F0BF19FBB21B00517D2B /* fhnNoisySquare.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = fhnNoisySquare.jpg; sourceTree = "<group>"; };
@@ -74,7 +57,6 @@
 		BEB6A50519F21FCD00C158C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEB6A50619F21FCD00C158C8 /* MetalReactionDiffusionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalReactionDiffusionTests.swift; sourceTree = "<group>"; };
 		BEB6A51019F2214900C158C8 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
-		BED542D21A1878520092C272 /* Presets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presets.swift; sourceTree = "<group>"; };
 		BEDB3F641A1892B4002CA9DF /* preset.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = preset.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,15 +78,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BE1E50CB1A0437D3000BD5C1 /* coreData */ = {
-			isa = PBXGroup;
-			children = (
-				BE1E50CC1A0437F8000BD5C1 /* ReactionDiffusionEntity.swift */,
-				BE1E50C81A04367B000BD5C1 /* ReDiLab.xcdatamodeld */,
-			);
-			name = coreData;
-			sourceTree = "<group>";
-		};
 		BE97558319F8FD8A0003C748 /* async */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,27 +109,6 @@
 			name = shaders;
 			sourceTree = "<group>";
 		};
-		BE97558619F901430003C748 /* widgets */ = {
-			isa = PBXGroup;
-			children = (
-				BE97558719F901960003C748 /* ReactionDiffusionEditor.swift */,
-				BE9AA3A419F92808006640BF /* ParameterWidget.swift */,
-				BEAC770C1A0207A4004FC852 /* ParameterWidgetViewController.swift */,
-				BE1E51031A052F9D000BD5C1 /* BrowseAndLoadController.swift */,
-			);
-			name = widgets;
-			sourceTree = "<group>";
-		};
-		BE9AA3A119F90A1D006640BF /* reactionDiffusion */ = {
-			isa = PBXGroup;
-			children = (
-				BE9AA3A219F90A3E006640BF /* ReactionDiffusionImplementations.swift */,
-				BE9AA3A619F950A6006640BF /* ReactionDiffusion.swift */,
-				BED542D21A1878520092C272 /* Presets.swift */,
-			);
-			name = reactionDiffusion;
-			sourceTree = "<group>";
-		};
 		BEB6A4E219F21FCD00C158C8 = {
 			isa = PBXGroup;
 			children = (
@@ -178,9 +130,6 @@
 		BEB6A4ED19F21FCD00C158C8 /* ReDiLab */ = {
 			isa = PBXGroup;
 			children = (
-				BE1E50CB1A0437D3000BD5C1 /* coreData */,
-				BE9AA3A119F90A1D006640BF /* reactionDiffusion */,
-				BE97558619F901430003C748 /* widgets */,
 				BE97558519F8FDA90003C748 /* shaders */,
 				BE97558419F8FD940003C748 /* assets */,
 				BE97558319F8FD8A0003C748 /* async */,
@@ -330,18 +279,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE1E50CA1A04367B000BD5C1 /* ReDiLab.xcdatamodeld in Sources */,
-				BE9AA3A719F950A6006640BF /* ReactionDiffusion.swift in Sources */,
-				BE1E51041A052F9D000BD5C1 /* BrowseAndLoadController.swift in Sources */,
 				BEA8066519F40E75001C1673 /* Async.swift in Sources */,
-				BEAC770D1A0207A4004FC852 /* ParameterWidgetViewController.swift in Sources */,
-				BE97558819F901960003C748 /* ReactionDiffusionEditor.swift in Sources */,
-				BE9AA3A519F92808006640BF /* ParameterWidget.swift in Sources */,
 				BEB6A51119F2214900C158C8 /* Shaders.metal in Sources */,
-				BE1E50CD1A0437F8000BD5C1 /* ReactionDiffusionEntity.swift in Sources */,
 				BEB6A4F319F21FCD00C158C8 /* ViewController.swift in Sources */,
-				BED542D31A1878520092C272 /* Presets.swift in Sources */,
-				BE9AA3A319F90A3E006640BF /* ReactionDiffusionImplementations.swift in Sources */,
 				BEB6A4F119F21FCD00C158C8 /* AppDelegate.swift in Sources */,
 				BE1E51021A052976000BD5C1 /* UIImageExtension.swift in Sources */,
 			);
@@ -559,19 +499,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		BE1E50C81A04367B000BD5C1 /* ReDiLab.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				BE1E50C91A04367B000BD5C1 /* ReDiLab.xcdatamodel */,
-			);
-			currentVersion = BE1E50C91A04367B000BD5C1 /* ReDiLab.xcdatamodel */;
-			path = ReDiLab.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = BEB6A4E319F21FCD00C158C8 /* Project object */;
 }

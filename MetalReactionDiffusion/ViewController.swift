@@ -41,7 +41,6 @@ class ViewController: UIViewController, UIPopoverControllerDelegate
     var commandQueue: MTLCommandQueue! = nil
 
     let imageView =  UIImageView(frame: CGRectZero)
-    let editor = ReactionDiffusionEditor(frame: CGRectZero)
     
     var region: MTLRegion!
     var textureA: MTLTexture!
@@ -57,38 +56,13 @@ class ViewController: UIViewController, UIPopoverControllerDelegate
     var threadGroupCount:MTLSize!
     var threadGroups: MTLSize!
 
-    var reactionDiffusionModel: ReactionDiffusion = GrayScott()
-    {
-        didSet
-        {
-            if oldValue.model != reactionDiffusionModel.model
-            {
-                newModelLoadedFlag = true
-            }
-        }
-    }
-    
-    var requestedReactionDiffusionModel: ReactionDiffusionModels?
-
     let appDelegate: AppDelegate
-    let managedObjectContext: NSManagedObjectContext
-    
-    let browseAndLoadController: BrowseAndLoadController
-    //let popoverController: UIPopoverController
     
     required init(coder aDecoder: NSCoder)
     {
         appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        managedObjectContext = appDelegate.managedObjectContext!
-        
-        browseAndLoadController = BrowseAndLoadController()
-        //popoverController = UIPopoverController(contentViewController: browseAndLoadController)
         
         super.init(coder: aDecoder)
-
-        browseAndLoadController.preferredContentSize = CGSize(width: 640, height: 480)
-
-        //popoverController.delegate = self
     }
 
     
@@ -101,67 +75,13 @@ class ViewController: UIViewController, UIPopoverControllerDelegate
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
         
         view.addSubview(imageView)
-        view.addSubview(editor)
 
-        editor.alpha = 0
-        imageView.alpha = 0
-
-        UIView.animateWithDuration(0.5, delay: 0.25, options: UIViewAnimationOptions.CurveEaseInOut, animations: {self.imageView.alpha = 1.0; self.editor.alpha = 1.0}, completion: nil)
-        
-        editor.reactionDiffusionModel = reactionDiffusionModel
-        editor.addTarget(self, action: "editorChangeHandler:", forControlEvents: UIControlEvents.ValueChanged)
-        editor.addTarget(self, action: "resetSimulationHandler", forControlEvents: UIControlEvents.ResetSimulation)
-        editor.addTarget(self, action: "modelChangedHandler:", forControlEvents: UIControlEvents.ModelChanged)
-        editor.addTarget(self, action: "saveModel", forControlEvents: UIControlEvents.SaveModel)
-        editor.addTarget(self, action: "loadModel", forControlEvents: UIControlEvents.LoadModel)
-        
         setUpMetal()
-    }
-
-    final func modelChangedHandler(value: ReactionDiffusionEditor)
-    {
-        if value.requestedReactionDiffusionModel != nil
-        {
-            requestedReactionDiffusionModel = value.requestedReactionDiffusionModel!
-        }
-    }
-    
-    final func editorChangeHandler(value: ReactionDiffusionEditor)
-    {
-        reactionDiffusionModel.reactionDiffusionStruct = value.reactionDiffusionModel.reactionDiffusionStruct
     }
     
     func resetSimulationHandler()
     {
         resetSimulationFlag = true
-    }
-    
-    func saveModel()
-    {
-        var newEntity = ReactionDiffusionEntity.createInManagedObjectContext(managedObjectContext, model: reactionDiffusionModel.model.rawValue, reactionDiffusionStruct: reactionDiffusionModel.reactionDiffusionStruct, image: self.imageView.image!)
-        
-       appDelegate.saveContext()
-    }
-    
-    func loadModel()
-    {
-        let fetchRequest = NSFetchRequest(entityName: "ReactionDiffusionEntity")
-        
-        if let fetchResults = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [ReactionDiffusionEntity]
-        {
-            // retrieved fetchResults.count records....
-            //popoverController.presentPopoverFromRect(view.frame, inView: view, permittedArrowDirections: UIPopoverArrowDirection.allZeros, animated: true)
-        
-            browseAndLoadController.fetchResults = fetchResults
-        }
-    }
-    
-    func popoverControllerDidDismissPopover(popoverController: UIPopoverController)
-    {
-        if let _selectedEntity = browseAndLoadController.selectedEntity
-        {
-            reactionDiffusionModel = ReactionDiffusionEntity.createInstanceFromEntity(_selectedEntity)
-        }
     }
 
     func setUpMetal()
@@ -173,15 +93,13 @@ class ViewController: UIViewController, UIPopoverControllerDelegate
         if device == nil
         {
             errorFlag = true
-            
-    
         }
         else
         {
             defaultLibrary = device.newDefaultLibrary()
             commandQueue = device.newCommandQueue()
             
-            let kernelFunction = defaultLibrary.newFunctionWithName(reactionDiffusionModel.shaderName)
+            let kernelFunction = defaultLibrary.newFunctionWithName("yolp_kernel")
             pipelineState = device.newComputePipelineStateWithFunction(kernelFunction!, error: nil)
             
             setUpTexture()
@@ -221,9 +139,7 @@ class ViewController: UIViewController, UIPopoverControllerDelegate
                 {
                     self.newModelLoadedFlag = false
        
-                    self.editor.reactionDiffusionModel = self.reactionDiffusionModel
-                    
-                    let kernelFunction = self.defaultLibrary.newFunctionWithName(self.reactionDiffusionModel.shaderName)
+                    let kernelFunction = self.defaultLibrary.newFunctionWithName("yolp_kernel")
                     self.pipelineState = self.device.newComputePipelineStateWithFunction(kernelFunction!, error: nil)
                     
                     self.resetSimulationFlag = true
@@ -236,26 +152,8 @@ class ViewController: UIViewController, UIPopoverControllerDelegate
                     self.setUpTexture()
                 }
                 
-                if self.requestedReactionDiffusionModel != nil
-                {
-                    let _requestedReactionDiffusionModel = self.requestedReactionDiffusionModel!
-                    
-                    switch _requestedReactionDiffusionModel
-                    {
-                        case .GrayScott:
-                            self.reactionDiffusionModel = GrayScott()
-                        case .FitzHughNagumo:
-                            self.reactionDiffusionModel = FitzhughNagumo()
-                        case .BelousovZhabotinsky:
-                            self.reactionDiffusionModel = BelousovZhabotinsky()
-                    }
-                    
-                    self.requestedReactionDiffusionModel = nil
-                    self.editor.reactionDiffusionModel = self.reactionDiffusionModel
-                
-                    let kernelFunction = self.defaultLibrary.newFunctionWithName(self.reactionDiffusionModel.shaderName)
-                    self.pipelineState = self.device.newComputePipelineStateWithFunction(kernelFunction!, error: nil)
-                }
+                let kernelFunction = self.defaultLibrary.newFunctionWithName("yolp_kernel")
+                self.pipelineState = self.device.newComputePipelineStateWithFunction(kernelFunction!, error: nil)
             }
    
             let fps = Int( 1 / (CFAbsoluteTimeGetCurrent() - self.runTime))
@@ -268,7 +166,7 @@ class ViewController: UIViewController, UIPopoverControllerDelegate
 
     func setUpTexture()
     {
-        let imageRef = reactionDiffusionModel.initalImage.CGImage!
+        let imageRef = UIImage(named: "fhnNoisySquare.jpg")!.CGImage!
 
         threadGroupCount = MTLSizeMake(16, 16, 1)
         threadGroups = MTLSizeMake(Int(imageSide) / threadGroupCount.width, Int(imageSide) / threadGroupCount.height, 1)
@@ -296,29 +194,29 @@ class ViewController: UIViewController, UIPopoverControllerDelegate
         let commandEncoder = commandBuffer.computeCommandEncoder()
         
         commandEncoder.setComputePipelineState(pipelineState)
-        
-        var buffer: MTLBuffer = device.newBufferWithBytes(&reactionDiffusionModel.reactionDiffusionStruct, length: sizeof(ReactionDiffusionParameters), options: nil)
-        commandEncoder.setBuffer(buffer, offset: 0, atIndex: 0)
+
+        //var buffer: MTLBuffer = device.newBufferWithBytes(&reactionDiffusionModel.reactionDiffusionStruct, length: sizeof(ReactionDiffusionParameters), options: nil)
+        //commandEncoder.setBuffer(buffer, offset: 0, atIndex: 0)
         
         commandQueue = device.newCommandQueue()
         
-        for _ in 0 ... reactionDiffusionModel.iterationsPerFrame
+        //for _ in 0 ... reactionDiffusionModel.iterationsPerFrame
+        //{
+        if useTextureAForInput
         {
-            if useTextureAForInput
-            {
-                commandEncoder.setTexture(textureA, atIndex: 0)
-                commandEncoder.setTexture(textureB, atIndex: 1)
-            }
-            else
-            {
-                commandEncoder.setTexture(textureB, atIndex: 0)
-                commandEncoder.setTexture(textureA, atIndex: 1)
-            }
-
-            commandEncoder.dispatchThreadgroups(threadGroups, threadsPerThreadgroup: threadGroupCount)
-
-            useTextureAForInput = !useTextureAForInput
+            commandEncoder.setTexture(textureA, atIndex: 0)
+            commandEncoder.setTexture(textureB, atIndex: 1)
         }
+        else
+        {
+            commandEncoder.setTexture(textureB, atIndex: 0)
+            commandEncoder.setTexture(textureA, atIndex: 1)
+        }
+
+        commandEncoder.dispatchThreadgroups(threadGroups, threadsPerThreadgroup: threadGroupCount)
+
+        useTextureAForInput = !useTextureAForInput
+        //}
         
         commandEncoder.endEncoding()
         commandBuffer.commit()
@@ -356,9 +254,9 @@ class ViewController: UIViewController, UIPopoverControllerDelegate
         
         imageView.frame = CGRect(x: 0, y: topLayoutGuide.length, width: imageSide, height: imageSide)
      
-        let editorWidth = CGFloat(view.frame.width - imageSide)
+        //let editorWidth = CGFloat(view.frame.width - imageSide)
         
-        editor.frame = CGRect(x: imageSide, y: topLayoutGuide.length, width: editorWidth, height: imageSide)
+        //editor.frame = CGRect(x: imageSide, y: topLayoutGuide.length, width: editorWidth, height: imageSide)
     }
     
     override func didReceiveMemoryWarning()
