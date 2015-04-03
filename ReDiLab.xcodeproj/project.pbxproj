@@ -270,7 +270,7 @@
 				TargetAttributes = {
 					BEB6A4EA19F21FCD00C158C8 = {
 						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = ZBFYF9JG5V;
+						DevelopmentTeam = DN7WW3HPZ4;
 					};
 					BEB6A4FF19F21FCD00C158C8 = {
 						CreatedOnToolsVersion = 6.0;
@@ -478,7 +478,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = ReDiLab;
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -492,7 +492,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = ReDiLab;
 				PROVISIONING_PROFILE = "";
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

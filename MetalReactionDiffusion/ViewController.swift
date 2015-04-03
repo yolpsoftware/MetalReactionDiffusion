@@ -74,7 +74,7 @@ class ViewController: UIViewController, UIPopoverControllerDelegate
     let managedObjectContext: NSManagedObjectContext
     
     let browseAndLoadController: BrowseAndLoadController
-    let popoverController: UIPopoverController
+    //let popoverController: UIPopoverController
     
     required init(coder aDecoder: NSCoder)
     {
@@ -82,13 +82,13 @@ class ViewController: UIViewController, UIPopoverControllerDelegate
         managedObjectContext = appDelegate.managedObjectContext!
         
         browseAndLoadController = BrowseAndLoadController()
-        popoverController = UIPopoverController(contentViewController: browseAndLoadController)
+        //popoverController = UIPopoverController(contentViewController: browseAndLoadController)
         
         super.init(coder: aDecoder)
 
         browseAndLoadController.preferredContentSize = CGSize(width: 640, height: 480)
 
-        popoverController.delegate = self
+        //popoverController.delegate = self
     }
 
     
@@ -150,7 +150,7 @@ class ViewController: UIViewController, UIPopoverControllerDelegate
         if let fetchResults = managedObjectContext.executeFetchRequest(fetchRequest, error: nil) as? [ReactionDiffusionEntity]
         {
             // retrieved fetchResults.count records....
-            popoverController.presentPopoverFromRect(view.frame, inView: view, permittedArrowDirections: UIPopoverArrowDirection.allZeros, animated: true)
+            //popoverController.presentPopoverFromRect(view.frame, inView: view, permittedArrowDirections: UIPopoverArrowDirection.allZeros, animated: true)
         
             browseAndLoadController.fetchResults = fetchResults
         }

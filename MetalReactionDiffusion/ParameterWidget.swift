@@ -14,12 +14,12 @@ class ParameterWidget: UIControl, UIPopoverControllerDelegate
     let slider = UISlider(frame: CGRectZero)
 
     let parameterWidgetViewController: ParameterWidgetViewController
-    let popoverController: UIPopoverController
+    //let popoverController: UIPopoverController
     
     override init(frame: CGRect)
     {
         parameterWidgetViewController = ParameterWidgetViewController()
-        popoverController =  UIPopoverController(contentViewController: parameterWidgetViewController)
+        //popoverController =  UIPopoverController(contentViewController: parameterWidgetViewController)
         
         super.init(frame: frame)
     }
@@ -64,7 +64,7 @@ class ParameterWidget: UIControl, UIPopoverControllerDelegate
                 popupSource.origin.x += superview!.frame.origin.x
                 popupSource.origin.y += superview!.frame.origin.y
          
-                popoverController.presentPopoverFromRect(popupSource, inView: rootController.view, permittedArrowDirections: UIPopoverArrowDirection.Up, animated: true)
+                //popoverController.presentPopoverFromRect(popupSource, inView: rootController.view, permittedArrowDirections: UIPopoverArrowDirection.Up, animated: true)
             }
         }
     }
